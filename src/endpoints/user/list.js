@@ -13,4 +13,5 @@ module.exports = {
         res.status(500).json({ error: 'Could not retrieve users.' });
       });
   },
+  protected: true,
 };
