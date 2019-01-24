@@ -1,16 +1,13 @@
 const db = require('../dbConfig.js');
-const mappers = require('./mappers');
 
 module.exports = {
   get: function(id) {
     let query = db('users').select('name', 'email');
-
     if (id) {
       return query
         .where('id', id)
         .first()
     }
-
     return query
   },
   insert: function(user) {
@@ -20,7 +17,14 @@ module.exports = {
      // {
      //   this.get(id);
       //});
-  },/*
+  },
+  getLogin: function(name) {
+    let query = db('users');
+    return query
+      .where('name', name)
+      .first()
+  },
+  /*
   update: function(id, changes) {
     return db('actions')
       .where('id', id)
