@@ -14,6 +14,7 @@ module.exports = {
       .then((returnedUser) => {
         console.log(returnedUser);
         if (returnedUser && bcrypt.compareSync(user.password, returnedUser.password)) {
+          req.session.user = user; // saved on server in memory
           res.status(201).json(`welcome ${user.name}`);
         } else {
           res.status(400).json({ error: 'Not authenticated' });
